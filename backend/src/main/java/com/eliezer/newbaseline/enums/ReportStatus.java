@@ -1,5 +1,5 @@
 package com.eliezer.newbaseline.enums;
 
 public enum ReportStatus {
-    ESTOQUE, ABRIR_OP
+    STOCK_UP, OPEN_OP
 }

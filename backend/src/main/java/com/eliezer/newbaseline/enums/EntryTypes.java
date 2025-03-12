@@ -1,5 +1,5 @@
 package com.eliezer.newbaseline.enums;
 
 public enum EntryTypes {
-    LISTA_AVANCADA, PRONTO
+    ADVANCED_LIST, FINISHED
 }

@@ -1,5 +1,5 @@
 package com.eliezer.newbaseline.enums;
 
 public enum PcpStatus {
-    ABRIR_OP, OP_CONTIDA
+    OPEN_OP, CONTAINED_OP
 }
