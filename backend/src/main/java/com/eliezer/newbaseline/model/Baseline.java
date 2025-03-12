@@ -43,6 +43,7 @@ public class Baseline {
     @Enumerated(value = EnumType.STRING)
     private ProjectStatus projectStatus;
 
+    @Column(columnDefinition = "TEXT")
     private String mediaUrl;
 
     @Column(nullable = false, unique = true)
