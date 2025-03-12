@@ -14,7 +14,6 @@ public record BaselineResponseDTO(
     LocalDate endProjectDate,
     Integer projectDuration,
     ProjectStatus projectStatus,
-    String mediaUrl,
     String proposalNumber,
     Instant createdAt
 ) {}
