@@ -46,7 +46,7 @@ public class Baseline {
     @Column(columnDefinition = "TEXT")
     private String mediaUrl;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String proposalNumber;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")

@@ -7,9 +7,9 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface BaselineMapper {
-    //Entrada -> Entity
+    // Entrada -> Entity
     Baseline toEntity(BaselineRequestDTO dto);
 
-    //Entity -> Saída
+    // Entity -> Saída
     BaselineResponseDTO toResponseDTO(Baseline entity);
 }
