@@ -1,4 +1,7 @@
 package com.eliezer.newbaseline.repository;
 
-public interface BaselineItemRepository {
+import com.eliezer.newbaseline.model.BaselineItem;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BaselineItemRepository extends JpaRepository<BaselineItem, Long> {
 }

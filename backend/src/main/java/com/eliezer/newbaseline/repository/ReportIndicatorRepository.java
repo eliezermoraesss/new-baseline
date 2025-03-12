@@ -1,4 +1,7 @@
 package com.eliezer.newbaseline.repository;
 
-public interface ReportIndicatorRepository {
+import com.eliezer.newbaseline.model.ReportIndicator;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ReportIndicatorRepository extends JpaRepository<ReportIndicator, Long> {
 }
