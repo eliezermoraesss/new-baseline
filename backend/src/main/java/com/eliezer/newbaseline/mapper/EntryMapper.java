@@ -5,7 +5,6 @@ import com.eliezer.newbaseline.dto.response.EntryResponseDTO;
 import com.eliezer.newbaseline.model.Baseline;
 import com.eliezer.newbaseline.model.Entry;
 import com.eliezer.newbaseline.model.Equipment;
-import com.eliezer.newbaseline.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -28,15 +27,6 @@ public interface EntryMapper {
         Baseline baseline = new Baseline();
         baseline.setId(baselineId);
         return baseline;
-    }
-
-    default User mapUser(Long createdById) {
-        if (createdById == null) {
-            return null;
-        }
-        User user = new User();
-        user.setId(createdById);
-        return user;
     }
 
     default Equipment mapEquipment(Long equipmentId) {

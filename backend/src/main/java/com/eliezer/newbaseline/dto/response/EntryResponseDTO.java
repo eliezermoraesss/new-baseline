@@ -1,7 +1,6 @@
 package com.eliezer.newbaseline.dto.response;
 
 import com.eliezer.newbaseline.enums.EntryTypes;
-import com.eliezer.newbaseline.model.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -17,6 +16,6 @@ public record EntryResponseDTO(
      String baselineCode,
      String equipmentDescription,
      Long notificationId,
-     List<BaselineItem> baselineItems,
+     List<BaselineItemResponseDTO> baselineItems,
      Instant createdAt
 ) {}
