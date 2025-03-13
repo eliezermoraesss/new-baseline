@@ -11,5 +11,15 @@ public interface BaselineMapper {
     @Mapping(target = "createdBy", source = "createdById")
     Baseline toEntity(BaselineRequestDTO dto);
 
+    @Mapping(source = "createdBy.fullName", target = "createdBy")
     BaselineResponseDTO toDTO(Baseline entity);
+
+    default Baseline toBaselineFromId(Long baselineId) {
+        if (baselineId == null) {
+            return null;
+        }
+        Baseline baseline = new Baseline();
+        baseline.setId(baselineId);
+        return baseline;
+    }
 }

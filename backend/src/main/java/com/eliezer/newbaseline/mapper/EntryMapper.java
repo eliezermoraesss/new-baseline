@@ -2,9 +2,7 @@ package com.eliezer.newbaseline.mapper;
 
 import com.eliezer.newbaseline.dto.request.EntryRequestDTO;
 import com.eliezer.newbaseline.dto.response.EntryResponseDTO;
-import com.eliezer.newbaseline.model.Baseline;
 import com.eliezer.newbaseline.model.Entry;
-import com.eliezer.newbaseline.model.Equipment;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -21,21 +19,12 @@ public interface EntryMapper {
     @Mapping(source = "notification.id", target = "notificationId")
     EntryResponseDTO toDTO(Entry entity);
 
-    default Baseline mapBaseline(Long baselineId) {
-        if (baselineId == null) {
+    default Entry toEntryFromId(Long entryId) {
+        if (entryId == null) {
             return null;
         }
-        Baseline baseline = new Baseline();
-        baseline.setId(baselineId);
-        return baseline;
-    }
-
-    default Equipment mapEquipment(Long equipmentId) {
-        if (equipmentId == null) {
-            return null;
-        }
-        Equipment equipment = new Equipment();
-        equipment.setId(equipmentId);
-        return equipment;
+        Entry entry = new Entry();
+        entry.setId(entryId);
+        return entry;
     }
 }

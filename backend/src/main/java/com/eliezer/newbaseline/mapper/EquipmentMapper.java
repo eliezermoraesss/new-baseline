@@ -13,4 +13,13 @@ public interface EquipmentMapper {
 
     @Mapping(source = "createdBy.fullName", target = "createdBy")
     EquipmentResponseDTO toDTO(Equipment entity);
+
+    default Equipment mapEquipment(Long equipmentId) {
+        if (equipmentId == null) {
+            return null;
+        }
+        Equipment equipment = new Equipment();
+        equipment.setId(equipmentId);
+        return equipment;
+    }
 }

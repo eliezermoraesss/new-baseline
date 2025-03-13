@@ -1,4 +1,16 @@
 package com.eliezer.newbaseline.dto.response;
 
-public record NotificationResponseDTO() {
+import java.time.Instant;
+import java.util.Set;
+
+public record NotificationResponseDTO(
+    Long id,
+    String title,
+    Set<EmailGroupResponseDTO> emailGroups,
+    String message,
+    Instant createdAt,
+    String createdBy,
+    String baselineCode,
+    Long entryId
+) {
 }
