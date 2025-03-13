@@ -54,16 +54,10 @@ public class Baseline {
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant createdAt;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User createdBy;
 
     @OneToMany(mappedBy = "baseline")
     private Set<Entry> entries = new HashSet<>();
-
-    @OneToMany(mappedBy = "baseline")
-    private Set<Notification> notifications = new HashSet<>();
-
-    @OneToMany(mappedBy = "baseline")
-    private Set<LogEvent> logEvents = new HashSet<>();
 }

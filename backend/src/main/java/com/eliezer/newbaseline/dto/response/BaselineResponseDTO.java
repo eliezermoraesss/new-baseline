@@ -19,7 +19,5 @@ public record BaselineResponseDTO(
     String proposalNumber,
     Instant createdAt,
     UserDTO createdBy,
-    Set<EntryResponseDTO> entries,
-    Set<NotificationResponseDTO> notifications,
-    Set<LogEventResponseDTO> logEvents
+    Set<EntryResponseDTO> entries
 ) {}

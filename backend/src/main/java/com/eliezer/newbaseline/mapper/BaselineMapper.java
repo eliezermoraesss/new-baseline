@@ -15,8 +15,5 @@ public interface BaselineMapper {
     // Saída Entity->DTO (Response)
     @Mapping(source = "createdBy", target = "createdBy")
     @Mapping(source = "entries", target = "entries")
-    @Mapping(source = "notifications", target = "notifications")
-    @Mapping(source = "logEvents", target = "logEvents")
     BaselineResponseDTO toResponseDTO(Baseline entity);
-
 }
