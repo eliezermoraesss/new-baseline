@@ -1,9 +1,11 @@
 package com.eliezer.newbaseline.dto.response;
 
+import com.eliezer.newbaseline.dto.UserDTO;
 import com.eliezer.newbaseline.enums.ProjectStatus;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Set;
 
 public record BaselineResponseDTO(
     String baselineCode,
@@ -15,5 +17,9 @@ public record BaselineResponseDTO(
     Integer projectDuration,
     ProjectStatus projectStatus,
     String proposalNumber,
-    Instant createdAt
+    Instant createdAt,
+    UserDTO createdBy,
+    Set<EntryResponseDTO> entries,
+    Set<NotificationResponseDTO> notifications,
+    Set<LogEventResponseDTO> logEvents
 ) {}

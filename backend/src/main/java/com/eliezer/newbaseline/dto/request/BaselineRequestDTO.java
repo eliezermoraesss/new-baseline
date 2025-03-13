@@ -42,5 +42,8 @@ public record BaselineRequestDTO(
 
         @Size(max = 30, message = "Número da oferta deve ter no máximo 30 caracteres")
         @NotNull
-        String proposalNumber
+        String proposalNumber,
+
+        @NotBlank(message = "ID do usuário é obrigatório")
+        Long createdById
 ) {}

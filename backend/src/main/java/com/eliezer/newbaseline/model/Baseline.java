@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -51,4 +53,17 @@ public class Baseline {
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant createdAt;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User createdBy;
+
+    @OneToMany(mappedBy = "baseline")
+    private Set<Entry> entries = new HashSet<>();
+
+    @OneToMany(mappedBy = "baseline")
+    private Set<Notification> notifications = new HashSet<>();
+
+    @OneToMany(mappedBy = "baseline")
+    private Set<LogEvent> logEvents = new HashSet<>();
 }
