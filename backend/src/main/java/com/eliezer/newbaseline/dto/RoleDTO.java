@@ -1,4 +1,8 @@
 package com.eliezer.newbaseline.dto;
 
-public record RoleDTO() {
-}
+import jakarta.validation.constraints.NotBlank;
+
+public record RoleDTO(
+    @NotBlank Long id,
+    @NotBlank String authority
+) {}

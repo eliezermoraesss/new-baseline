@@ -1,4 +1,6 @@
 package com.eliezer.newbaseline.dto.response;
 
-public record DepartmentResponseDTO() {
-}
+public record DepartmentResponseDTO(
+        Long id,
+        String description
+) {}

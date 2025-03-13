@@ -3,9 +3,12 @@ package com.eliezer.newbaseline.dto.request;
 import com.eliezer.newbaseline.enums.ProjectStatus;
 import jakarta.validation.constraints.*;
 
+import java.time.Instant;
 import java.time.LocalDate;
 
 public record BaselineRequestDTO(
+        Long id,
+
         @Size(min = 9, message = "Código da baseline deve ter no mínimo 9 caracteres")
         @NotBlank(message = "Código da baseline é obrigatório")
         String baselineCode,
@@ -40,9 +43,13 @@ public record BaselineRequestDTO(
         @NotNull
         String mediaUrl,
 
+        Instant createdAt,
+
         @Size(max = 30, message = "Número da oferta deve ter no máximo 30 caracteres")
         @NotNull
         String proposalNumber,
+
+
 
         @NotBlank(message = "ID do usuário é obrigatório")
         Long createdById

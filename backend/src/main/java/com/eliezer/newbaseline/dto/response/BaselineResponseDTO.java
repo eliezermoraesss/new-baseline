@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 public record BaselineResponseDTO(
+    Long id,
     String baselineCode,
     String projectName,
     LocalDate openDate,
