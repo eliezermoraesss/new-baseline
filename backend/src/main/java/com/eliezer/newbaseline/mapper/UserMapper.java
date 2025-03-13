@@ -1,7 +1,6 @@
 package com.eliezer.newbaseline.mapper;
 
 import com.eliezer.newbaseline.dto.UserDTO;
-import com.eliezer.newbaseline.model.Department;
 import com.eliezer.newbaseline.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -14,13 +13,16 @@ public interface UserMapper {
     @Mapping(source = "department", target = "departmentId")
     UserDTO toDTO(User entity);
 
-    default Long map(Department department) {
-        return department != null ? department.getId() : null;
+    default User toUserFromId(Long createdById) {
+        if (createdById == null) {
+            return null;
+        }
+        User user = new User();
+        user.setId(createdById);
+        return user;
     }
 
-    default Department map(Long departmentId) {
-        Department department = new Department();
-        department.setId(departmentId);
-        return department;
+    default String toFullNameFromUser(User createdBy) {
+        return createdBy != null ? createdBy.getFullName() : null;
     }
 }

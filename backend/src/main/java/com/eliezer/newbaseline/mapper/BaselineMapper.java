@@ -3,7 +3,6 @@ package com.eliezer.newbaseline.mapper;
 import com.eliezer.newbaseline.dto.request.BaselineRequestDTO;
 import com.eliezer.newbaseline.dto.response.BaselineResponseDTO;
 import com.eliezer.newbaseline.model.Baseline;
-import com.eliezer.newbaseline.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -13,13 +12,4 @@ public interface BaselineMapper {
     Baseline toEntity(BaselineRequestDTO dto);
 
     BaselineResponseDTO toDTO(Baseline entity);
-
-    default User map(Long createdById) {
-        if (createdById == null) {
-            return null;
-        }
-        User user = new User();
-        user.setId(createdById);
-        return user;
-    }
 }

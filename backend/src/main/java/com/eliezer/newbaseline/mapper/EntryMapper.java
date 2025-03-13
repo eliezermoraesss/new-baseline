@@ -18,6 +18,7 @@ public interface EntryMapper {
     @Mapping(source = "createdBy.fullName", target = "createdBy")
     @Mapping(source = "baseline.baselineCode", target = "baselineCode")
     @Mapping(source = "equipment.description", target = "equipmentDescription")
+    @Mapping(source = "notification.id", target = "notificationId")
     EntryResponseDTO toDTO(Entry entity);
 
     default Baseline mapBaseline(Long baselineId) {
