@@ -49,8 +49,6 @@ public record BaselineRequestDTO(
         @NotNull
         String proposalNumber,
 
-
-
         @NotBlank(message = "ID do usuário é obrigatório")
         Long createdById
 ) {}

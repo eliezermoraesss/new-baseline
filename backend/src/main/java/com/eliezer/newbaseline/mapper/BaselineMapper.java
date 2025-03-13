@@ -14,7 +14,7 @@ public interface BaselineMapper {
 
     @Mapping(source = "createdBy", target = "createdBy")
     @Mapping(source = "entries", target = "entries")
-    BaselineResponseDTO toResponseDTO(Baseline entity);
+    BaselineResponseDTO toDTO(Baseline entity);
 
     default User map(Long createdById) {
         if (createdById == null) {
