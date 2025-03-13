@@ -11,5 +11,6 @@ public interface BaselineMapper {
     @Mapping(target = "createdBy", source = "createdById")
     Baseline toEntity(BaselineRequestDTO dto);
 
+    @Mapping(source = "createdBy.fullName", target = "createdBy")
     BaselineResponseDTO toDTO(Baseline entity);
 }

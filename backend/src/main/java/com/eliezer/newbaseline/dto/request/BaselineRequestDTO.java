@@ -43,8 +43,6 @@ public record BaselineRequestDTO(
         @NotNull
         String mediaUrl,
 
-        Instant createdAt,
-
         @Size(max = 30, message = "Número da oferta deve ter no máximo 30 caracteres")
         @NotNull
         String proposalNumber,
