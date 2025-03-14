@@ -18,7 +18,7 @@ public class EmailGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     private String groupName;
 
     @ManyToMany(fetch = FetchType.LAZY)

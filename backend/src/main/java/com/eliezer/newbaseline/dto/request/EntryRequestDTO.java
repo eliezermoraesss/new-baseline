@@ -13,12 +13,16 @@ public record EntryRequestDTO(
      @NotBlank(message = "O código do produto é obrigatório")
      String productCode,
 
-     @NotBlank(message = "O tipo de entrada é obrigatório")
-     EntryTypes entryTypes,
+     @Size(max = 2, message = "A unidade deve ter no máximo 2 caracteres")
+     @NotBlank(message = "A unidade é obrigatória")
+     String unit,
 
      @Positive(message = "A quantidade deve ser positiva")
      @NotNull
      BigDecimal quantity,
+
+     @NotBlank(message = "O tipo de entrada é obrigatório")
+     EntryTypes entryTypes,
 
      @FutureOrPresent
      Instant createdAt,

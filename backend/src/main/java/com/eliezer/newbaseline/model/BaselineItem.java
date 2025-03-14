@@ -19,13 +19,29 @@ public class BaselineItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private Integer level;
+
+    @Column(nullable = false)
     private String componentCode;
+
+    @Column(nullable = false)
     private String parentCode;
+
+    @Column(nullable = false)
     private String description;
-    private String unity;
+
+    @Column(nullable = false)
+    private String unit;
+
+    @Column(nullable = false)
     private BigDecimal quantity;
+
+    @Column(nullable = false)
     private BigDecimal totalQuantity;
+
+    @Column(nullable = false)
     private boolean hasDrawing = false;
 
     @ManyToOne(fetch = FetchType.LAZY)

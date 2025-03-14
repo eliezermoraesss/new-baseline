@@ -23,12 +23,20 @@ public class Entry {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String productCode;
+
+    @Column(nullable = false)
     private String productDescription;
+
+    @Column(nullable = false)
+    private String unit;
+
+    @Column(nullable = false)
+    private BigDecimal quantity;
 
     @Enumerated(value = EnumType.STRING)
     private EntryTypes entryTypes;
-    private BigDecimal quantity;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant createdAt;

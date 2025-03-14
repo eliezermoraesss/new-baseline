@@ -12,7 +12,7 @@ public record BaselineItemResponseDTO(
     String componentCode,
     String parentCode,
     String description,
-    String unity,
+    String unit,
     BigDecimal quantity,
     BigDecimal totalQuantity,
     boolean hasDrawing,

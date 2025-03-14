@@ -1,11 +1,12 @@
 package com.eliezer.newbaseline.mapper;
 
 import com.eliezer.newbaseline.dto.request.ReportIndicatorRequestDTO;
+import com.eliezer.newbaseline.dto.response.ReportIndicatorResponseDTO;
 import com.eliezer.newbaseline.model.ReportIndicator;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {BaselineMapper.class})
 public interface ReportIndicatorMapper {
     ReportIndicator toEntity(ReportIndicatorRequestDTO dto);
-    ReportIndicatorRequestDTO toDTO(ReportIndicator entity);
+    ReportIndicatorResponseDTO toDTO(ReportIndicator entity);
 }

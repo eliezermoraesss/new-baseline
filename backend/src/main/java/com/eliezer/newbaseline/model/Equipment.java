@@ -17,8 +17,13 @@ public class Equipment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String family;
+
+    @Column(nullable = false)
     private String model;
+
+    @Column(nullable = false)
     private String description;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")

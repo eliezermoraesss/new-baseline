@@ -26,7 +26,7 @@ public record BaselineItemRequestDTO(
     String description,
 
     @Size(max = 2, message = "O campo deve ter no máximo 2 caracteres")
-    @NotBlank String unity,
+    @NotBlank String unit,
     @NotBlank @Positive BigDecimal quantity,
     @NotBlank @Positive BigDecimal totalQuantity,
     @NotBlank boolean hasDrawing,
