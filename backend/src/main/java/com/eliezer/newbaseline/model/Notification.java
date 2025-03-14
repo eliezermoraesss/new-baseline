@@ -29,6 +29,7 @@ public class Notification {
     @Column(columnDefinition = "TEXT")
     private String message;
 
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -1,4 +1,12 @@
 package com.eliezer.newbaseline.dto.response;
 
-public record LogEventResponseDTO() {
-}
+import java.time.Instant;
+
+public record LogEventResponseDTO(
+    Long id,
+    String message,
+    String createdBy,
+    String baselineCode,
+    Long entryId,
+    Instant createdAt
+) {}

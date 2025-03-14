@@ -29,6 +29,8 @@ public class Entry {
     @Enumerated(value = EnumType.STRING)
     private EntryTypes entryTypes;
     private BigDecimal quantity;
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant createdAt;
 
     @Type(JsonBinaryType.class)

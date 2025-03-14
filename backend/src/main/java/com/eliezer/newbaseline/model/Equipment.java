@@ -20,6 +20,8 @@ public class Equipment {
     private String family;
     private String model;
     private String description;
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
