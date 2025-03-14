@@ -3,7 +3,6 @@ package com.eliezer.newbaseline.dto.request;
 import com.eliezer.newbaseline.enums.ProjectStatus;
 import jakarta.validation.constraints.*;
 
-import java.time.Instant;
 import java.time.LocalDate;
 
 public record BaselineRequestDTO(

@@ -37,4 +37,7 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id")
     private Department department;
+
+    @ManyToMany(mappedBy = "emails")
+    private Set<EmailGroup> emailGroups = new HashSet<>();
 }

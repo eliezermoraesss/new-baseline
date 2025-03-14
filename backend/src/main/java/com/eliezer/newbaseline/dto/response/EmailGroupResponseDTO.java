@@ -1,4 +1,8 @@
 package com.eliezer.newbaseline.dto.response;
 
-public record EmailGroupResponseDTO() {
+import com.eliezer.newbaseline.dto.UserDTO;
+
+import java.util.Set;
+
+public record EmailGroupResponseDTO(Long id, String groupName, Set<UserDTO> emails) {
 }
