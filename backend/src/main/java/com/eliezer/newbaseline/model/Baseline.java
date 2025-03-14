@@ -21,7 +21,7 @@ public class Baseline {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "baseline_code", nullable = false, unique = true)
     private String baselineCode;
 
     @Column(nullable = false, columnDefinition = "TEXT")
