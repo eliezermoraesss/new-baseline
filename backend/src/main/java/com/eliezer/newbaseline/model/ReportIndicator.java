@@ -18,10 +18,14 @@ public class ReportIndicator {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "baseline_id")
+    private Baseline baseline;
+
     @Column(nullable = false)
     private String code;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
     @Column(nullable = false)
@@ -36,9 +40,11 @@ public class ReportIndicator {
     @Column(nullable = false)
     private BigDecimal difference;
 
+    private String scNumber;
+    private BigDecimal scQuantity;
+    private String opNumber;
+    private BigDecimal opQuantity;
+
     @Column(nullable = false)
     private ReportStatus reportStatus;
-
-    @OneToOne()
-    private Baseline baselineCode;
 }
