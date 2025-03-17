@@ -4,19 +4,16 @@ import com.eliezer.newbaseline.common.SoftDeleteEntity;
 import com.eliezer.newbaseline.enums.EntryTypes;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -41,10 +38,6 @@ public class Entry extends SoftDeleteEntity {
     @Enumerated(value = EnumType.STRING)
     private EntryTypes entryTypes;
 
-    @Type(JsonBinaryType.class)
-    @Column(columnDefinition = "jsonb")
-    private List<BaselineItem> components;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User createdBy;
@@ -63,4 +56,8 @@ public class Entry extends SoftDeleteEntity {
 
     @OneToMany(mappedBy = "entry", cascade = CascadeType.ALL)
     private List<BaselineItem> baselineItems = new ArrayList<>();
+
+    @Type(JsonBinaryType.class)
+    @Column(columnDefinition = "jsonb")
+    private List<Component> components;
 }

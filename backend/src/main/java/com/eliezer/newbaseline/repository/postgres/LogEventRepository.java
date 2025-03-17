@@ -1,4 +1,4 @@
-package com.eliezer.newbaseline.repository;
+package com.eliezer.newbaseline.repository.postgres;
 
 import com.eliezer.newbaseline.model.LogEvent;
 import org.springframework.data.jpa.repository.JpaRepository;
