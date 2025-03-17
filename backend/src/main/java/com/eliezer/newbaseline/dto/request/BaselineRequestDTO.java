@@ -48,4 +48,5 @@ public record BaselineRequestDTO(
 
         @NotBlank(message = "ID do usuário é obrigatório")
         Long createdById
+
 ) {}

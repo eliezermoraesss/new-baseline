@@ -41,9 +41,6 @@ public class Entry extends SoftDeleteEntity {
     @Enumerated(value = EnumType.STRING)
     private EntryTypes entryTypes;
 
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant createdAt;
-
     @Type(JsonBinaryType.class)
     @Column(columnDefinition = "jsonb")
     private List<BaselineItem> components;

@@ -7,6 +7,7 @@ import java.util.Set;
 
 public record NotificationRequestDTO(
     Long id,
+
     @NotBlank(message = "O campo título é obrigatório")
     String title,
 

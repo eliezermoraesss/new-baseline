@@ -34,9 +34,6 @@ public class Notification extends SoftDeleteEntity {
     @Column(columnDefinition = "TEXT")
     private String message;
 
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant createdAt;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User createdBy;

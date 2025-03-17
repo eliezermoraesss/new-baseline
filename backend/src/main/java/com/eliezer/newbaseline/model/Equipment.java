@@ -29,9 +29,6 @@ public class Equipment extends SoftDeleteEntity {
     @Column(nullable = false)
     private String description;
 
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant createdAt;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User createdBy;

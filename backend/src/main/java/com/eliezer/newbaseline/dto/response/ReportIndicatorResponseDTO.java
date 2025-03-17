@@ -3,6 +3,7 @@ package com.eliezer.newbaseline.dto.response;
 import com.eliezer.newbaseline.enums.ReportStatus;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 
 public record ReportIndicatorResponseDTO(
     Long id,
@@ -17,6 +18,8 @@ public record ReportIndicatorResponseDTO(
     String scNumber,
     BigDecimal scQuantity,
     String opNumber,
-    BigDecimal opQuantity
+    BigDecimal opQuantity,
+    Instant createdAt,
+    Instant updatedAt
 ) {
 }

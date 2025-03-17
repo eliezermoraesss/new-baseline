@@ -8,5 +8,6 @@ public record EquipmentResponseDTO(
         String model,
         String description,
         String createdBy,
-        Instant createdAt
+        Instant createdAt,
+        Instant updatedAt
 ) {}

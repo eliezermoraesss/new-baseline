@@ -20,5 +20,4 @@ public record EquipmentRequestDTO(
 
     @NotBlank(message = "O ID do usuário é obrigatório")
     Long createdById
-
 ) {}

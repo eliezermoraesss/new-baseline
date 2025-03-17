@@ -18,5 +18,6 @@ public record EntryResponseDTO(
      String equipmentDescription,
      Long notificationId,
      List<BaselineItemResponseDTO> baselineItems,
-     Instant createdAt
+     Instant createdAt,
+     Instant updatedAt
 ) {}

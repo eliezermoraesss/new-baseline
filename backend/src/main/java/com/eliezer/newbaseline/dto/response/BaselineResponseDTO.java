@@ -17,5 +17,6 @@ public record BaselineResponseDTO(
     ProjectStatus projectStatus,
     String proposalNumber,
     String createdBy,
-    Instant createdAt
+    Instant createdAt,
+    Instant updatedAt
 ) {}

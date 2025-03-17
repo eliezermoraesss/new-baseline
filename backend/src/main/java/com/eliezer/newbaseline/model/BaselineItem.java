@@ -60,7 +60,4 @@ public class BaselineItem extends SoftDeleteEntity {
 
     @Enumerated(EnumType.STRING)
     private PcpStatus pcpStatus;
-
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant createdAt;
 }

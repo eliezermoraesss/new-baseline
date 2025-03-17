@@ -24,8 +24,9 @@ public record EntryRequestDTO(
      @NotBlank(message = "O tipo de entrada é obrigatório")
      EntryTypes entryTypes,
 
-     @FutureOrPresent
      Instant createdAt,
+
+     Instant updatedAt,
 
      @NotBlank(message = "ID do usuário é obrigatório")
      Long createdById,

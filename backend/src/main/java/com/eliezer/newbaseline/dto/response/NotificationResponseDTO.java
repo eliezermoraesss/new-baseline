@@ -11,6 +11,8 @@ public record NotificationResponseDTO(
     Instant createdAt,
     String createdBy,
     String baselineCode,
-    Long entryId
+    Long entryId,
+    Instant createAt,
+    Instant updatedAt
 ) {
 }

@@ -2,13 +2,11 @@ package com.eliezer.newbaseline.dto.request;
 
 import com.eliezer.newbaseline.enums.EntryTypes;
 import com.eliezer.newbaseline.enums.PcpStatus;
-import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 
 public record BaselineItemRequestDTO(
     Long id,
@@ -32,6 +30,5 @@ public record BaselineItemRequestDTO(
     @NotBlank boolean hasDrawing,
     @NotBlank EntryTypes entryTypes,
     @NotBlank EntryRequestDTO entry,
-    @NotBlank PcpStatus pcpStatus,
-    @FutureOrPresent Instant createdAt
+    @NotBlank PcpStatus pcpStatus
 ) {}

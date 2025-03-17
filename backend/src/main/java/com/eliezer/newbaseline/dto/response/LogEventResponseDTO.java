@@ -8,5 +8,6 @@ public record LogEventResponseDTO(
     String createdBy,
     String baselineCode,
     Long entryId,
-    Instant createdAt
+    Instant createdAt,
+    Instant updatedAt
 ) {}

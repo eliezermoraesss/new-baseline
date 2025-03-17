@@ -19,6 +19,7 @@ public record BaselineItemResponseDTO(
     EntryTypes entryTypes,
     Long entryId,
     PcpStatus pcpStatus,
-    Instant createdAt
+    Instant createdAt,
+    Instant updatedAt
 ) {
 }
