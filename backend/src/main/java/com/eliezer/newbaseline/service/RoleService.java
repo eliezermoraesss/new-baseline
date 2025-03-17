@@ -9,6 +9,7 @@ import com.eliezer.newbaseline.service.exception.ResourceNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -26,12 +27,12 @@ public class RoleService {
         this.roleMapper = roleMapper;
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<RoleDTO> findAll() {
         return roleRepository.findAll().stream().map(roleMapper::toDTO).toList();
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public RoleDTO findById(Long id) {
         Role role = roleRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(MSG_NOT_FOUND + id));
         return roleMapper.toDTO(role);
@@ -50,6 +51,8 @@ public class RoleService {
         role = roleRepository.save(role);
         return roleMapper.toDTO(role);
     }
+
+    @Transactional(propagation = Propagation.REQUIRED)
     public void delete(Long id) {
         try {
             roleRepository.deleteById(id);

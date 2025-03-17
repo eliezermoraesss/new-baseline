@@ -13,6 +13,8 @@ public interface UserMapper {
     @Mapping(source = "department", target = "departmentId")
     UserDTO toDTO(User entity);
 
+    void updateUserFromDTO(UserDTO userDTO, User user);
+
     default User toUserFromId(Long createdById) {
         if (createdById == null) {
             return null;
