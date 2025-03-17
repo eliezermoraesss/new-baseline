@@ -5,6 +5,7 @@ import com.eliezer.newbaseline.dto.response.EquipmentResponseDTO;
 import com.eliezer.newbaseline.model.Equipment;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface EquipmentMapper {
@@ -13,6 +14,9 @@ public interface EquipmentMapper {
 
     @Mapping(source = "createdBy.fullName", target = "createdBy")
     EquipmentResponseDTO toDTO(Equipment entity);
+
+    @Mapping(target = "id", ignore = true)
+    void updateEquipmentFromDTO(EquipmentRequestDTO dto, @MappingTarget Equipment entity);
 
     default Equipment mapEquipment(Long equipmentId) {
         if (equipmentId == null) {

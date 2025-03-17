@@ -4,6 +4,7 @@ import com.eliezer.newbaseline.dto.UserDTO;
 import com.eliezer.newbaseline.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring", uses = {DepartmentMapper.class, RoleMapper.class})
 public interface UserMapper {
@@ -13,7 +14,8 @@ public interface UserMapper {
     @Mapping(source = "department", target = "departmentId")
     UserDTO toDTO(User entity);
 
-    void updateUserFromDTO(UserDTO userDTO, User user);
+    @Mapping(target = "id", ignore = true)
+    void updateUserFromDTO(UserDTO dto, @MappingTarget User entity);
 
     default User toUserFromId(Long createdById) {
         if (createdById == null) {

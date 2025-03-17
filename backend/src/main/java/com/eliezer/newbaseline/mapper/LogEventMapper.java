@@ -5,6 +5,7 @@ import com.eliezer.newbaseline.dto.response.LogEventResponseDTO;
 import com.eliezer.newbaseline.model.LogEvent;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring", uses = {UserMapper.class, BaselineMapper.class, EntryMapper.class})
 public interface LogEventMapper {
@@ -14,4 +15,7 @@ public interface LogEventMapper {
     @Mapping(target = "baselineCode", source = "baseline.baselineCode")
     @Mapping(target = "entryId", source = "entry.id")
     LogEventResponseDTO toDTO(LogEvent entity);
+
+    @Mapping(target = "id", ignore = true)
+    void updateLogEventFromDTO(LogEventRequestDTO dto, @MappingTarget LogEvent entity);
 }

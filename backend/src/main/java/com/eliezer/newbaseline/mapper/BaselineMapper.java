@@ -5,6 +5,7 @@ import com.eliezer.newbaseline.dto.response.BaselineResponseDTO;
 import com.eliezer.newbaseline.model.Baseline;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring", uses = {UserMapper.class, EntryMapper.class})
 public interface BaselineMapper {
@@ -13,6 +14,9 @@ public interface BaselineMapper {
 
     @Mapping(source = "createdBy.fullName", target = "createdBy")
     BaselineResponseDTO toDTO(Baseline entity);
+
+    @Mapping(target = "id", ignore = true)
+    void updateBaselineFromDTO(BaselineRequestDTO dto, @MappingTarget Baseline entity);
 
     default Baseline toBaselineFromId(Long baselineId) {
         if (baselineId == null) {

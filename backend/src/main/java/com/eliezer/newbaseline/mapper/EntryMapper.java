@@ -5,6 +5,7 @@ import com.eliezer.newbaseline.dto.response.EntryResponseDTO;
 import com.eliezer.newbaseline.model.Entry;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring", uses = {BaselineMapper.class, UserMapper.class, EquipmentMapper.class})
 public interface EntryMapper {
@@ -18,6 +19,9 @@ public interface EntryMapper {
     @Mapping(source = "equipment.description", target = "equipmentDescription")
     @Mapping(source = "notification.id", target = "notificationId")
     EntryResponseDTO toDTO(Entry entity);
+
+    @Mapping(target = "id", ignore = true)
+    void updateEntryFromDTO(EntryRequestDTO dto, @MappingTarget Entry entity);
 
     default Entry toEntryFromId(Long entryId) {
         if (entryId == null) {
