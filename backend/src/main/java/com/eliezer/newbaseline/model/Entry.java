@@ -1,10 +1,12 @@
 package com.eliezer.newbaseline.model;
 
+import com.eliezer.newbaseline.common.SoftDeleteEntity;
 import com.eliezer.newbaseline.enums.EntryTypes;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
@@ -13,12 +15,13 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_entry")
-public class Entry {
+public class Entry extends SoftDeleteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

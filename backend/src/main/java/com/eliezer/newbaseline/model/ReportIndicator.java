@@ -1,19 +1,22 @@
 package com.eliezer.newbaseline.model;
 
+import com.eliezer.newbaseline.common.SoftDeleteEntity;
 import com.eliezer.newbaseline.enums.ReportStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_report_indicator")
-public class ReportIndicator {
+public class ReportIndicator extends SoftDeleteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
