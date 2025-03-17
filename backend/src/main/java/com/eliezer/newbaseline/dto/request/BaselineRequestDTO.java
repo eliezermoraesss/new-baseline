@@ -32,10 +32,6 @@ public record BaselineRequestDTO(
         @NotNull(message = "Data de término do projeto é obrigatória")
         LocalDate endProjectDate,
 
-        @PositiveOrZero(message = "Duração do projeto deve ser positiva")
-        @NotNull(message = "Duração do projeto é obrigatória")
-        Integer projectDuration,
-
         @NotBlank(message = "Status do projeto é obrigatório")
         ProjectStatus projectStatus,
 
@@ -48,5 +44,4 @@ public record BaselineRequestDTO(
 
         @NotBlank(message = "ID do usuário é obrigatório")
         Long createdById
-
 ) {}

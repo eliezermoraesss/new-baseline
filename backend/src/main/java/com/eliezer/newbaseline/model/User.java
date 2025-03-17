@@ -42,4 +42,8 @@ public class User {
 
     @ManyToMany(mappedBy = "emails")
     private Set<EmailGroup> emailGroups = new HashSet<>();
+
+    public void addRole(Role role) {
+        roles.add(role);
+    }
 }

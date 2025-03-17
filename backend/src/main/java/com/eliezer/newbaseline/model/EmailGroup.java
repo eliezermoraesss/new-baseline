@@ -30,4 +30,8 @@ public class EmailGroup extends SoftDeleteEntity {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private Set<User> emails = new HashSet<>();
+
+    public void addUser(User user) {
+        emails.add(user);
+    }
 }

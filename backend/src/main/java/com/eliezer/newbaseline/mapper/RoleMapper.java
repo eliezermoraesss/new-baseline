@@ -8,4 +8,6 @@ import org.mapstruct.Mapper;
 public interface RoleMapper {
     Role toEntity(RoleDTO dto);
     RoleDTO toDTO(Role entity);
+
+    void updateRoleFromDTO(RoleDTO roleDTO, Role role);
 }
