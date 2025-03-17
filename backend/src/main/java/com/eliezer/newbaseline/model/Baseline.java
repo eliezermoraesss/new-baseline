@@ -1,22 +1,24 @@
 package com.eliezer.newbaseline.model;
 
+import com.eliezer.newbaseline.common.SoftDeleteEntity;
 import com.eliezer.newbaseline.enums.ProjectStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_baseline")
-public class Baseline {
+public class Baseline extends SoftDeleteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -50,9 +52,6 @@ public class Baseline {
 
     @Column(unique = true)
     private String proposalNumber;
-
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
