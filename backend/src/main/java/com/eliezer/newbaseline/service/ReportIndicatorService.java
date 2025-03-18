@@ -9,11 +9,11 @@ import com.eliezer.newbaseline.service.exception.DataBaseException;
 import com.eliezer.newbaseline.service.exception.ResourceNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class ReportIndicatorService {
@@ -27,8 +27,8 @@ public class ReportIndicatorService {
     }
 
     @Transactional(readOnly = true)
-    public List<ReportIndicatorResponseDTO> findAll() {
-        return reportIndicatorRepository.findAll().stream().map(reportIndicatorMapper::toDTO).toList();
+    public Page<ReportIndicatorResponseDTO> findAllPaged(Pageable pageable) {
+        return reportIndicatorRepository.findAll(pageable).map(reportIndicatorMapper::toDTO);
     }
 
     @Transactional(readOnly = true)

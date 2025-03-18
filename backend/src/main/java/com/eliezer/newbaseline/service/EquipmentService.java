@@ -9,11 +9,11 @@ import com.eliezer.newbaseline.service.exception.DataBaseException;
 import com.eliezer.newbaseline.service.exception.ResourceNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class EquipmentService {
@@ -27,8 +27,8 @@ public class EquipmentService {
     }
 
     @Transactional(readOnly = true)
-    public List<EquipmentResponseDTO> findAll() {
-        return equipmentRepository.findAll().stream().map(equipmentMapper::toDTO).toList();
+    public Page<EquipmentResponseDTO> findAllPaged(Pageable pageable) {
+        return equipmentRepository.findAll(pageable).map(equipmentMapper::toDTO);
     }
 
     @Transactional(readOnly = true)

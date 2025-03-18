@@ -9,11 +9,11 @@ import com.eliezer.newbaseline.service.exception.DataBaseException;
 import com.eliezer.newbaseline.service.exception.ResourceNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class NotificationService {
@@ -27,8 +27,8 @@ public class NotificationService {
     }
 
     @Transactional(readOnly = true)
-    public List<NotificationResponseDTO> findAll() {
-        return notificationRepository.findAll().stream().map(notificationMapper::toDTO).toList();
+    public Page<NotificationResponseDTO> findAllPaged(Pageable pageable) {
+        return notificationRepository.findAll(pageable).map(notificationMapper::toDTO);
     }
 
     @Transactional(readOnly = true)

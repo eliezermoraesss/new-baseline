@@ -9,11 +9,11 @@ import com.eliezer.newbaseline.service.exception.DataBaseException;
 import com.eliezer.newbaseline.service.exception.ResourceNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class BaselineService {
@@ -27,8 +27,8 @@ public class BaselineService {
     }
 
     @Transactional(readOnly = true)
-    public List<BaselineResponseDTO> findAll() {
-        return baselineRepository.findAll().stream().map(baselineMapper::toDTO).toList();
+    public Page<BaselineResponseDTO> findAllPaged(Pageable pageable) {
+        return baselineRepository.findAll(pageable).map(baselineMapper::toDTO);
     }
 
     @Transactional(readOnly = true)

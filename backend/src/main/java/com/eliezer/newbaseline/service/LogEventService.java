@@ -9,11 +9,11 @@ import com.eliezer.newbaseline.service.exception.DataBaseException;
 import com.eliezer.newbaseline.service.exception.ResourceNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class LogEventService {
@@ -27,8 +27,8 @@ public class LogEventService {
     }
 
     @Transactional(readOnly = true)
-    public List<LogEventResponseDTO> findAll() {
-        return logEventRepository.findAll().stream().map(logEventMapper::toDTO).toList();
+    public Page<LogEventResponseDTO> findAllPaged(Pageable pageable) {
+        return logEventRepository.findAll(pageable).map(logEventMapper::toDTO);
     }
 
     @Transactional(readOnly = true)
