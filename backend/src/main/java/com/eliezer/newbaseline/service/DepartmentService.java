@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DepartmentService {
@@ -54,12 +55,15 @@ public class DepartmentService {
     
     @Transactional(propagation = Propagation.REQUIRED)
     public void delete(Long id) {
-		try {
-			departmentRepository.deleteById(id);
-		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException(MSG_NOT_FOUND + id + " - " + e.getMessage());
-		} catch (DataIntegrityViolationException e) {
-			throw new DataBaseException("Integrity violation - " + e.getMessage());
-		}
-	}
+        Optional<Department> department = departmentRepository.findById(id);
+        if (department.isPresent()) {
+            try {
+                departmentRepository.deleteById(id);
+            } catch (DataIntegrityViolationException e) {
+                throw new DataBaseException("Integrity violation - " + e.getMessage());
+            }
+        } else {
+            throw new ResourceNotFoundException(MSG_NOT_FOUND + id);
+        }
+    }
 }

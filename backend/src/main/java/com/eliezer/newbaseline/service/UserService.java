@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -55,12 +56,15 @@ public class UserService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void delete(Long id) {
-        try {
-            userRepository.deleteById(id);
-        } catch (EmptyResultDataAccessException e) {
-            throw new ResourceNotFoundException(MSG_NOT_FOUND + id + " - " + e.getMessage());
-        } catch (DataIntegrityViolationException e) {
-            throw new DataBaseException("Integrity violation - " + e.getMessage());
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            try {
+                userRepository.deleteById(id);
+            } catch (DataIntegrityViolationException e) {
+                throw new DataBaseException("Integrity violation - " + e.getMessage());
+            }
+        } else {
+            throw new ResourceNotFoundException(MSG_NOT_FOUND + id);
         }
     }
 }

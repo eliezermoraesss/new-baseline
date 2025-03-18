@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 public class ReportIndicatorService {
     public static final String MSG_NOT_FOUND = "ReportIndicator Id not found: ";
@@ -53,12 +55,15 @@ public class ReportIndicatorService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void delete(Long id) {
-        try {
-            reportIndicatorRepository.deleteById(id);
-        } catch (EmptyResultDataAccessException e) {
-            throw new ResourceNotFoundException(MSG_NOT_FOUND + id + " - " + e.getMessage());
-        } catch (DataIntegrityViolationException e) {
-            throw new DataBaseException("Integrity violation - " + e.getMessage());
+        Optional<ReportIndicator> reportIndicator = reportIndicatorRepository.findById(id);
+        if (reportIndicator.isPresent()) {
+            try {
+                reportIndicatorRepository.deleteById(id);
+            } catch (DataIntegrityViolationException e) {
+                throw new DataBaseException("Integrity violation - " + e.getMessage());
+            }
+        } else {
+            throw new ResourceNotFoundException(MSG_NOT_FOUND + id);
         }
     }
 }

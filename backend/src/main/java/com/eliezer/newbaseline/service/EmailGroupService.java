@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmailGroupService {
@@ -53,12 +54,15 @@ public class EmailGroupService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void delete(Long id) {
-        try {
-            emailGroupRepository.deleteById(id);
-        } catch (EmptyResultDataAccessException e) {
-            throw new ResourceNotFoundException(MSG_NOT_FOUND + id + " - " + e.getMessage());
-        } catch (DataIntegrityViolationException e) {
-            throw new DataBaseException("Integrity violation - " + e.getMessage());
+        Optional<EmailGroup> emailGroup = emailGroupRepository.findById(id);
+        if (emailGroup.isPresent()) {
+            try {
+                emailGroupRepository.deleteById(id);
+            } catch (DataIntegrityViolationException e) {
+                throw new DataBaseException("Integrity violation - " + e.getMessage());
+            }
+        } else {
+            throw new ResourceNotFoundException(MSG_NOT_FOUND + id);
         }
     }
 }
