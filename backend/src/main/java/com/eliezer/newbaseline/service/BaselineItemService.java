@@ -8,12 +8,13 @@ import com.eliezer.newbaseline.repository.postgres.BaselineItemRepository;
 import com.eliezer.newbaseline.service.exception.DataBaseException;
 import com.eliezer.newbaseline.service.exception.ResourceNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 public class BaselineItemService {
@@ -53,12 +54,15 @@ public class BaselineItemService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void delete(Long id) {
-        try {
-            baselineItemRepository.deleteById(id);
-        } catch (EmptyResultDataAccessException e) {
-            throw new ResourceNotFoundException(MSG_NOT_FOUND + id + " - " + e.getMessage());
-        } catch (DataIntegrityViolationException e) {
-            throw new DataBaseException("Integrity violation - " + e.getMessage());
+        Optional<BaselineItem> baselineItem = baselineItemRepository.findById(id);
+        if (baselineItem.isPresent()) {
+            try {
+                baselineItemRepository.deleteById(id);
+            } catch (DataIntegrityViolationException e) {
+                throw new DataBaseException("Integrity violation - " + e.getMessage());
+            }
+        } else {
+            throw new ResourceNotFoundException(MSG_NOT_FOUND + id);
         }
     }
 }
