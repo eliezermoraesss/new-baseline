@@ -45,6 +45,7 @@ public class RoleService {
         return roleMapper.toDTO(role);
     }
 
+    @Transactional
     public RoleDTO update(Long id, RoleDTO roleDTO) {
         Role role = roleRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(MSG_NOT_FOUND + id));
         roleMapper.updateRoleFromDTO(roleDTO, role);
