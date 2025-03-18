@@ -8,7 +8,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring", uses = {UserMapper.class})
-public interface EmalGroupMapper {
+public interface EmailGroupMapper {
     EmailGroup toEntity(EmailGroupRequestDTO dto);
     EmailGroupResponseDTO toDTO(EmailGroup entity);
 
