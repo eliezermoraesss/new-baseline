@@ -16,7 +16,6 @@ import java.net.URI;
 @RestController
 @RequestMapping(value = "/baselines")
 public class BaselineController {
-
     private final BaselineService service;
 
     public BaselineController(BaselineService service) {
