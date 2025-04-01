@@ -41,7 +41,6 @@ public class Baseline extends SoftDeleteEntity {
     @Column(nullable = false)
     private LocalDate endProjectDate;
 
-    @Column(nullable = false)
     private Integer projectDuration;
 
     @Enumerated(value = EnumType.STRING)

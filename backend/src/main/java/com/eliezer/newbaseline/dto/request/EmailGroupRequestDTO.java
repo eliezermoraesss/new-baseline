@@ -13,7 +13,6 @@ public record EmailGroupRequestDTO(
         @NotBlank(message = "O campo nome do grupo é obrigatório")
         String groupName,
 
-        @NotBlank(message = "O campo e-mail é obrigatório")
         Set<UserDTO> emails
 ) {
 }

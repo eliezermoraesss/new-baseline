@@ -9,9 +9,13 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface EmailGroupMapper {
+    @Mapping(target = "emails", ignore = true)
     EmailGroup toEntity(EmailGroupRequestDTO dto);
+
+    @Mapping(target = "emails", ignore = true)
     EmailGroupResponseDTO toDTO(EmailGroup entity);
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "emails", ignore = true)
     void updateEmailGroupFromDTO(EmailGroupRequestDTO dto, @MappingTarget EmailGroup entity);
 }

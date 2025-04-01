@@ -57,6 +57,7 @@ public class UserService {
         return userMapper.toDTO(user);
     }
 
+
     @Transactional(propagation = Propagation.REQUIRED)
     public void delete(Long id) {
         Optional<User> user = userRepository.findById(id);

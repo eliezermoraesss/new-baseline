@@ -1,6 +1,7 @@
 package com.eliezer.newbaseline.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public record EquipmentRequestDTO(
@@ -18,6 +19,6 @@ public record EquipmentRequestDTO(
     @NotBlank(message = "O campo descrição é obrigatório")
     String description,
 
-    @NotBlank(message = "O ID do usuário é obrigatório")
+    @NotNull(message = "O ID do usuário é obrigatório")
     Long createdById
 ) {}

@@ -28,6 +28,6 @@ public record UserDTO(
 
     Set<RoleDTO> roles,
 
-    @NotBlank(message = "O campo departamento é obrigatório")
+    @NotNull(message = "O campo departamento é obrigatório")
     Long departmentId
 ) {}

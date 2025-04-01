@@ -15,11 +15,11 @@ public interface DepartmentMapper {
     @Mapping(target = "id", ignore = true)
     void updateDepartmentFromDTO(DepartmentRequestDTO dto, @MappingTarget Department entity);
 
-    default Long map(Department department) {
+    default Long toDepartmentIdFromDepartment(Department department) {
         return department != null ? department.getId() : null;
     }
 
-    default Department map(Long departmentId) {
+    default Department toDepartmentFromId(Long departmentId) {
         Department department = new Department();
         department.setId(departmentId);
         return department;
