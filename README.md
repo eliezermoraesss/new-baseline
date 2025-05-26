@@ -443,7 +443,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 **Eliezer Moraes**
 - GitHub: [@eliezermoraesss](https://github.com/eliezermoraesss)
-- LinkedIn: [Seu LinkedIn](https://linkedin.com/in/seu-perfil)
+- LinkedIn: [Eliezer Moraes Silva](https://www.linkedin.com/in/eliezer-moraes-silva-80b68010b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 
 ## 🙏 Agradecimentos
 
